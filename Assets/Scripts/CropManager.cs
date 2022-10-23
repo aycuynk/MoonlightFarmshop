@@ -10,6 +10,7 @@ public class CropManager : MonoBehaviour
 
     [SerializeField] Tilemap cropMap, interactableMap;
     [SerializeField] Tile cropTile;
+    [SerializeField] List<Crop> crops;
 
     private void Start()
     {
@@ -47,7 +48,7 @@ public class CropManager : MonoBehaviour
             inventory.Remove(UI_Manager.selectedSlot.slotID);
             GameManager.instance.uiManager.RefreshInventoryUI("Toolbar");
             Crop crop = Instantiate(itemToPlant.GetComponent<Crop>(), position, Quaternion.identity);
-            
+            crops.Add(crop);
             crop.StartToGrow();
         }
     }
@@ -55,5 +56,21 @@ public class CropManager : MonoBehaviour
     public void GrowSeed(Crop crop, int fromIndex, int toIndex)
     {
         cropMap.SwapTile(crop.data.cropTiles[fromIndex], crop.data.cropTiles[toIndex]);
+    }
+
+    public void Harvest(Vector3Int position)
+    {
+        if (crops.Count <= 0) return;
+
+        for (int i = 0; i < crops.Count; i++)
+        {
+            Vector3Int cropPos = new Vector3Int((int)crops[i].transform.position.x, (int)crops[i].transform.position.y, 0);
+            if (crops[i].isSeedGrown && position == cropPos)
+            {
+                cropMap.SetTile(cropPos, null);
+                crops[i].EndGrow(cropPos);
+                crops.Remove(crops[i]);
+            }
+        }
     }
 }

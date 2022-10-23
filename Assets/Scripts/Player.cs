@@ -32,11 +32,18 @@ public class Player : MonoBehaviour
                 if (IsHoeSelected() && GameManager.instance.tileManager.IsInteractable(position))
                 {
                     GameManager.instance.tileManager.SetInteracted(position);
+
                 }
                 else
                 {
                     GameManager.instance.cropManager.PlantSeed(position);
                 }
+                    
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GameManager.instance.cropManager.Harvest(position);
             }
         }
         else
@@ -44,6 +51,7 @@ public class Player : MonoBehaviour
             GameManager.instance.tileManager.SetHighlight(Vector3Int.zero, false);
         }
 
+        
     }
 
     public void DropItem(Item item)
