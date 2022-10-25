@@ -40,4 +40,9 @@ public class InventoryManager : MonoBehaviour
 
         return null;
     }
+
+    public bool IsInventoryFull(string inventoryName, string itemName, int maxCount)
+    {
+        return inventoryByName[inventoryName].IsFull(itemName, maxCount);
+    }
 }

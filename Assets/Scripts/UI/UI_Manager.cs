@@ -11,6 +11,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject inventoryPanel;
 
     public List<Inventory_UI> inventoryUIs;
+    public Shop_UI shopUI;
 
     public static Slot_UI draggedSlot;
     public static Image draggedIcon;

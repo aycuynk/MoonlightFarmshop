@@ -14,7 +14,16 @@ public class Collectable : MonoBehaviour
             Player player = collision.GetComponent<Player>();
             if (item != null)
             {
-                player.inventory.Add("Backpack", item);
+
+                if (player.inventory.IsInventoryFull("Toolbar", item.data.name, 9))
+                {
+                    player.inventory.Add("Backpack", item);
+                }
+                else
+                {
+                    player.inventory.Add("Toolbar", item);
+                }
+                GameManager.instance.uiManager.RefreshInventoryUI("Toolbar");
                 Destroy(this.gameObject);
             }
         }

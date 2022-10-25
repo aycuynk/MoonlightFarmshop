@@ -29,7 +29,7 @@ public class Inventory_UI : MonoBehaviour
             {
                 if (inventory.slots[i].itemName != "")
                 {
-                    slots[i].SetItme(inventory.slots[i]);
+                    slots[i].SetItem(inventory.slots[i]);
                 }
                 else
                 {

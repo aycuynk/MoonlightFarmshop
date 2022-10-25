@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] Inventory toolBarInventory;
 
     private bool isInteractiveItem;
+    public int money;
 
     private void Start()
     {

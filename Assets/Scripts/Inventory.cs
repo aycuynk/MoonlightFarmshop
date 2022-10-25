@@ -132,8 +132,28 @@ public class Inventory
             for (int i = 0; i < numToMove; i++)
             {
                 toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
-                fromSlot.RemoveItem(); 
+                fromSlot.RemoveItem();
             }
         }
+    }
+
+    public bool IsFull(string itemName, int maxSlotCount)
+    {
+        int fullSlotCount = 0;
+        foreach (Slot slot in slots)
+        {
+            if (slot.itemName != "" && !slot.CanAddItem(itemName))
+            {
+                fullSlotCount++;
+            }
+        }
+
+        if (fullSlotCount == maxSlotCount)
+        {
+            return true;
+        }
+
+        return false;
+
     }
 }

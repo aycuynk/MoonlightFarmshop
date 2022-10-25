@@ -13,7 +13,7 @@ public class Slot_UI : MonoBehaviour
     public TextMeshProUGUI quantityText;
     [SerializeField] Image highlight;
 
-    public void SetItme(Inventory.Slot slot)
+    public void SetItem(Inventory.Slot slot)
     {
         if(slot != null)
         {
