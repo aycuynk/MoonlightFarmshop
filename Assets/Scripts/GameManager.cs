@@ -31,4 +31,10 @@ public class GameManager : MonoBehaviour
         uiManager = GetComponent<UI_Manager>();
         cropManager = GetComponent<CropManager>();
     }
+
+    public void UpdatePlayerMoney(int value)
+    {
+        player.money += value;
+        uiManager.RefreshAll();
+    }
 }

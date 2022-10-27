@@ -6,6 +6,7 @@ using TMPro;
 
 public class Shop_Slot_UI : MonoBehaviour
 {
+    public int index;
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI title, price;
 

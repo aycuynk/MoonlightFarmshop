@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d0ee4f35781774abf8dc1e8af4d047, type: 3}
   m_Name: Patoto_Seeds
   m_EditorClassIdentifier: 
-  itemName: Patoto Seeds
+  itemType: 0
+  itemName: Potato Seeds
   icon: {fileID: 540632357552999301, guid: 2393956c19feb3d4aa5d80f844a6cda2, type: 3}
   cropTiles:
   - {fileID: 11400000, guid: 937339cd61bd5ba40918a82c8a66fdec, type: 2}

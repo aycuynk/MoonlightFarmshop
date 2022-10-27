@@ -13,6 +13,7 @@ public class Shop_UI : MonoBehaviour
 
     private void Start()
     {
+        shop = GameManager.instance.player.inventory.shop;
         Setup();
         Refresh();
     }
@@ -24,6 +25,7 @@ public class Shop_UI : MonoBehaviour
             if (shop.slots[i].title != "")
             {
                 shopSlots[i].SetItem(shop.slots[i]);
+                shopSlots[i].index = i;
             }
         }
     }

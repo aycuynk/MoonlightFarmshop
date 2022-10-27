@@ -94,5 +94,7 @@ public class UI_Manager : MonoBehaviour
         {
             keyValuePair.Value.Refresh();
         }
+
+        shopUI.Refresh();
     }
 }

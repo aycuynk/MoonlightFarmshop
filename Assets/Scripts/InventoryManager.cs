@@ -14,6 +14,9 @@ public class InventoryManager : MonoBehaviour
     public Inventory toolBar;
     [SerializeField] int toolBarSlotsCount;
 
+    [Header("Shop")]
+    public Shop shop;
+
     private void Awake()
     {
         backpack = new Inventory(backpackSlotsCount);
@@ -44,5 +47,16 @@ public class InventoryManager : MonoBehaviour
     public bool IsInventoryFull(string inventoryName, string itemName, int maxCount)
     {
         return inventoryByName[inventoryName].IsFull(itemName, maxCount);
+    }
+
+    public void BuyItem(Shop_Slot_UI slot)
+    {
+        Item itemToBuy = GameManager.instance.ItemManager.GetItemByName(shop.slots[slot.index].title);
+        if(GameManager.instance.player.money >= shop.slots[slot.index].price)
+        {
+            Add("Backpack", itemToBuy);
+            GameManager.instance.UpdatePlayerMoney(-shop.slots[slot.index].price);
+        }
+        
     }
 }
