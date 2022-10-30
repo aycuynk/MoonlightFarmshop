@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         toolBarInventory = inventory.GetInventoryByName("Toolbar");
+        money = GameManager.instance.data.playerData.money;
     }
 
     private void Update()

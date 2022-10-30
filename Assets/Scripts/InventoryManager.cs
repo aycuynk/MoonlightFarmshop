@@ -24,6 +24,8 @@ public class InventoryManager : MonoBehaviour
 
         inventoryByName.Add("Backpack", backpack);
         inventoryByName.Add("Toolbar", toolBar);
+
+        inventoryByName["Backpack"].slots = GameManager.instance.data.backpackSlots;
     }
 
     public void Add(string inventoryName, Item item)
@@ -55,6 +57,7 @@ public class InventoryManager : MonoBehaviour
         if(GameManager.instance.player.money >= shop.slots[slot.index].price)
         {
             Add("Backpack", itemToBuy);
+            GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots;
             GameManager.instance.UpdatePlayerMoney(-shop.slots[slot.index].price);
         }
         

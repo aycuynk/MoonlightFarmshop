@@ -12,10 +12,11 @@ public class GameManager : MonoBehaviour
     public CropManager cropManager;
 
     public Player player;
+    public GameData data;
 
     private void Awake()
     {
-        if(instance != null && instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
         }
@@ -25,16 +26,20 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+        data = SaveManager.ReadFromJSON<GameData>("player_data");
 
         ItemManager = GetComponent<ItemManager>();
         tileManager = GetComponent<TileManager>();
         uiManager = GetComponent<UI_Manager>();
         cropManager = GetComponent<CropManager>();
+
     }
 
     public void UpdatePlayerMoney(int value)
     {
         player.money += value;
         uiManager.RefreshAll();
+        data.playerData.money = player.money;
+        SaveManager.SaveToJSON<GameData>(data, "player_data");
     }
 }
