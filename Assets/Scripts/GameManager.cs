@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour
         player.money += value;
         uiManager.RefreshAll();
         data.playerData.money = player.money;
+        Save();
+    }
+
+    public void Save()
+    {
         SaveManager.SaveToJSON<GameData>(data, "player_data");
     }
 }

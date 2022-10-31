@@ -36,8 +36,8 @@ public class Inventory_UI : MonoBehaviour
                     slots[i].Setempty();
                 }
             }
+            GameManager.instance.Save();
         }
-       
     }
 
     public void Remove()
@@ -57,6 +57,15 @@ public class Inventory_UI : MonoBehaviour
                 inventory.Remove(UI_Manager.draggedSlot.slotID, inventory.slots[UI_Manager.draggedSlot.slotID].count);
             }
 
+            if (inventoryName == "Backpack")
+            {
+                GameManager.instance.data.backpackSlots = inventory.slots;
+            }
+            else
+            {
+                GameManager.instance.data.toolbarSlots = inventory.slots;
+            }
+            
             Refresh();
         }
 
@@ -97,6 +106,7 @@ public class Inventory_UI : MonoBehaviour
                 UI_Manager.draggedSlot.inventory.slots[UI_Manager.draggedSlot.slotID].count);
         }
         GameManager.instance.uiManager.RefreshAll();
+        GameManager.instance.data.backpackSlots = inventory.slots;
     }
 
     private void MoveToMousePosition(GameObject toMove)

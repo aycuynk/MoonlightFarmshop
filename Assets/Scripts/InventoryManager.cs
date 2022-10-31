@@ -26,6 +26,7 @@ public class InventoryManager : MonoBehaviour
         inventoryByName.Add("Toolbar", toolBar);
 
         inventoryByName["Backpack"].slots = GameManager.instance.data.backpackSlots;
+        inventoryByName["Toolbar"].slots = GameManager.instance.data.toolbarSlots;
     }
 
     public void Add(string inventoryName, Item item)
@@ -33,6 +34,10 @@ public class InventoryManager : MonoBehaviour
         if (inventoryByName.ContainsKey(inventoryName))
         {
             inventoryByName[inventoryName].Add(item);
+
+            GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots;
+            GameManager.instance.data.toolbarSlots = inventoryByName["Toolbar"].slots;
+            GameManager.instance.Save();
         }
     }
 
@@ -54,12 +59,12 @@ public class InventoryManager : MonoBehaviour
     public void BuyItem(Shop_Slot_UI slot)
     {
         Item itemToBuy = GameManager.instance.ItemManager.GetItemByName(shop.slots[slot.index].title);
-        if(GameManager.instance.player.money >= shop.slots[slot.index].price)
+        if (GameManager.instance.player.money >= shop.slots[slot.index].price)
         {
             Add("Backpack", itemToBuy);
             GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots;
             GameManager.instance.UpdatePlayerMoney(-shop.slots[slot.index].price);
         }
-        
+
     }
 }
