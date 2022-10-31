@@ -33,6 +33,11 @@ public class TileManager : MonoBehaviour
                 highlightMap.SetTile(position, hiddenHighlightTile);
             }
         }
+
+        foreach (var position in GameManager.instance.data.interactedTiles)
+        {
+            interactableMap.SetTile(position, interactedTile);
+        }
     }
 
     public bool IsInteractable(Vector3Int position)
@@ -53,6 +58,8 @@ public class TileManager : MonoBehaviour
     public void SetInteracted(Vector3Int position)
     {
         interactableMap.SetTile(position, interactedTile);
+        GameManager.instance.data.interactedTiles.Add(position);
+        GameManager.instance.Save();
     }
 
     public void SetHighlight(Vector3Int position, bool isOn)

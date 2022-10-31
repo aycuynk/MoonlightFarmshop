@@ -65,7 +65,7 @@ public class Inventory_UI : MonoBehaviour
             {
                 GameManager.instance.data.toolbarSlots = inventory.slots;
             }
-            
+
             Refresh();
         }
 
@@ -105,8 +105,17 @@ public class Inventory_UI : MonoBehaviour
             UI_Manager.draggedSlot.inventory.MoveSlot(UI_Manager.draggedSlot.slotID, slot.slotID, slot.inventory,
                 UI_Manager.draggedSlot.inventory.slots[UI_Manager.draggedSlot.slotID].count);
         }
+
+        if (inventoryName == "Backpack")
+        {
+            GameManager.instance.data.backpackSlots = inventory.slots;
+        }
+        else
+        {
+            GameManager.instance.data.toolbarSlots = inventory.slots;
+        }
+
         GameManager.instance.uiManager.RefreshAll();
-        GameManager.instance.data.backpackSlots = inventory.slots;
     }
 
     private void MoveToMousePosition(GameObject toMove)
