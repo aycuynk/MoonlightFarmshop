@@ -34,6 +34,7 @@ public class TileManager : MonoBehaviour
             }
         }
 
+        if (GameManager.instance.data.interactedTiles == null) return;
         foreach (var position in GameManager.instance.data.interactedTiles)
         {
             interactableMap.SetTile(position, interactedTile);

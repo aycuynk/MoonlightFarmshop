@@ -10,8 +10,7 @@ public class GameData
     public List<Inventory.Slot> backpackSlots;
     public List<Inventory.Slot> toolbarSlots;
     public List<Vector3Int> interactedTiles;
-
-    public List<CropData> cropDatas;
+    public List<Crop> plantedCrops;
 
     public PlayerData playerData;
 }

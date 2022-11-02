@@ -2,7 +2,7 @@
 
 public class Crop : Item
 {
-    public int cropIndex = 0;
+    private int cropIndex = 0;
     [SerializeField] float growTime;
     [SerializeField] BoxCollider2D collider;
     [SerializeField] SpriteRenderer sprite;
@@ -14,15 +14,6 @@ public class Crop : Item
         collider.enabled = false;
         sprite.sprite = null;
         cropIndex = 0;
-        isSeedGrown = false;
-        InvokeRepeating("Grow", 1, growTime);
-    }
-
-    public void ContinueToGrow(int index)
-    {
-        collider.enabled = false;
-        sprite.sprite = null;
-        cropIndex = index;
         isSeedGrown = false;
         InvokeRepeating("Grow", 1, growTime);
     }

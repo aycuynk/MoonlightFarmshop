@@ -19,11 +19,12 @@ public class CropManager : MonoBehaviour
 
         cropDatas = GameManager.instance.data.cropDatas;
 
-        for (int i = 0; i < cropDatas.Count; i++)
-        {
-            PlantSeed(cropDatas[i].cropPosition, cropDatas[i].plantedCrop, cropDatas[i].growIndex);
-            cropMap.SetTile(cropDatas[i].cropPosition, cropDatas[i].plantedCrop.data.cropTiles[cropDatas[i].growIndex]);
-        }
+        //if (cropDatas == null) return;
+        //for (int i = 0; i < cropDatas.Count; i++)
+        //{
+        //    PlantSeed(cropDatas[i].cropPosition, cropDatas[i].plantedCrop, cropDatas[i].growIndex);
+        //    cropMap.SetTile(cropDatas[i].cropPosition, cropDatas[i].plantedCrop.data.cropTiles[cropDatas[i].growIndex]);
+        //}
     }
 
     private void SetCropTile(Tile cropTile)
