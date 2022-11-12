@@ -59,11 +59,11 @@ public class Inventory_UI : MonoBehaviour
 
             if (inventoryName == "Backpack")
             {
-                GameManager.instance.data.backpackSlots = inventory.slots;
+                GameManager.instance.data.backpackSlots = inventory.slots.ToArray();
             }
             else
             {
-                GameManager.instance.data.toolbarSlots = inventory.slots;
+                GameManager.instance.data.toolbarSlots = inventory.slots.ToArray();
             }
 
             Refresh();
@@ -108,11 +108,11 @@ public class Inventory_UI : MonoBehaviour
 
         if (inventoryName == "Backpack")
         {
-            GameManager.instance.data.backpackSlots = inventory.slots;
+            GameManager.instance.data.backpackSlots = inventory.slots.ToArray();
         }
         else
         {
-            GameManager.instance.data.toolbarSlots = inventory.slots;
+            GameManager.instance.data.toolbarSlots = inventory.slots.ToArray();
         }
 
         GameManager.instance.uiManager.RefreshAll();

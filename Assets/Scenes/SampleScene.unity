@@ -25632,9 +25632,9 @@ MonoBehaviour:
     backpackSlots: []
     toolbarSlots: []
     interactedTiles: []
-    plantedCrops: []
+    cropDatas: []
     playerData:
-      money: 0
+      money: 10000
 --- !u!4 &1153049176
 Transform:
   m_ObjectHideFlags: 0

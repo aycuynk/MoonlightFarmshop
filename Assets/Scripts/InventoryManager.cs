@@ -25,8 +25,16 @@ public class InventoryManager : MonoBehaviour
         inventoryByName.Add("Backpack", backpack);
         inventoryByName.Add("Toolbar", toolBar);
 
-        inventoryByName["Backpack"].slots = GameManager.instance.data.backpackSlots;
-        inventoryByName["Toolbar"].slots = GameManager.instance.data.toolbarSlots;
+        for (int i = 0; i < GameManager.instance.data.backpackSlots.Length; i++)
+        {
+            inventoryByName["Backpack"].slots[i] = GameManager.instance.data.backpackSlots[i];
+        }
+
+        for (int i = 0; i < GameManager.instance.data.toolbarSlots.Length; i++)
+        {
+            inventoryByName["Toolbar"].slots[i] = GameManager.instance.data.toolbarSlots[i];
+        }
+
     }
 
     public void Add(string inventoryName, Item item)
@@ -35,8 +43,8 @@ public class InventoryManager : MonoBehaviour
         {
             inventoryByName[inventoryName].Add(item);
 
-            GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots;
-            GameManager.instance.data.toolbarSlots = inventoryByName["Toolbar"].slots;
+            GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots.ToArray();
+            GameManager.instance.data.toolbarSlots = inventoryByName["Toolbar"].slots.ToArray();
             GameManager.instance.Save();
         }
     }
@@ -62,7 +70,7 @@ public class InventoryManager : MonoBehaviour
         if (GameManager.instance.player.money >= shop.slots[slot.index].price)
         {
             Add("Backpack", itemToBuy);
-            GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots;
+            GameManager.instance.data.backpackSlots = inventoryByName["Backpack"].slots.ToArray();
             GameManager.instance.UpdatePlayerMoney(-shop.slots[slot.index].price);
         }
 

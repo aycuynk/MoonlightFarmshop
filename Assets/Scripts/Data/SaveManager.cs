@@ -6,7 +6,6 @@ using UnityEngine;
 
 public static class SaveManager
 {
-    //public GameData gameData;
 
     public static void SaveToJSON<T>(List<T> toSave, string filename)
     {
@@ -107,42 +106,4 @@ public static class JsonHelper
     {
         public T[] Items;
     }
-
-    //public void Save()
-    //{
-    //    string dataPath = Application.persistentDataPath;
-
-    //    var serializer = new XmlSerializer(typeof(GameData));
-    //    var stream = new FileStream(dataPath + "/" + gameData.saveName + ".save", FileMode.Create);
-    //    serializer.Serialize(stream, gameData);
-    //    stream.Close();
-
-    //    Debug.Log("Saved to this path: " + dataPath);
-    //}
-
-    //public void Load()
-    //{
-    //    string dataPath = Application.persistentDataPath;
-
-    //    if(System.IO.File.Exists(dataPath + "/" + gameData.saveName + ".save"))
-    //    {
-    //        var serializer = new XmlSerializer(typeof(GameData));
-    //        var stream = new FileStream(dataPath + "/" + gameData.saveName + ".save", FileMode.Open);
-
-    //        gameData = serializer.Deserialize(stream) as GameData;
-    //        stream.Close();
-
-    //        Debug.Log("Loaded");
-    //    }
-    //}
-
-    //public void DeleteSaveData()
-    //{
-    //    string dataPath = Application.persistentDataPath;
-
-    //    if (System.IO.File.Exists(dataPath + "/" + gameData.saveName + ".save"))
-    //    {
-    //        File.Delete(dataPath + "/" + gameData.saveName + ".save");
-    //    }
-    //}
 }
