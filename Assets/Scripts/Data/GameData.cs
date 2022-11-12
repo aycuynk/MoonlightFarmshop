@@ -7,8 +7,8 @@ public class GameData
 {
     public string saveName;
 
-    public List<Inventory.Slot> backpackSlots;
-    public List<Inventory.Slot> toolbarSlots;
+    public Inventory.Slot[] backpackSlots = new Inventory.Slot[21];
+    public Inventory.Slot[] toolbarSlots = new Inventory.Slot[9];
     public List<Vector3Int> interactedTiles;
 
     public List<CropData> cropDatas;

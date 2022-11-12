@@ -26,7 +26,18 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-        data = SaveManager.ReadFromJSON<GameData>("player_data");
+
+        if(SaveManager.ReadFromJSON<GameData>("player_data") != null)
+        {
+            data = SaveManager.ReadFromJSON<GameData>("player_data");
+        }
+        else
+        {
+            Save();
+            print("Data file created!");
+            data = SaveManager.ReadFromJSON<GameData>("player_data");
+        }
+
 
         ItemManager = GetComponent<ItemManager>();
         tileManager = GetComponent<TileManager>();
