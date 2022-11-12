@@ -25,8 +25,8 @@ public class InventoryManager : MonoBehaviour
         inventoryByName.Add("Backpack", backpack);
         inventoryByName.Add("Toolbar", toolBar);
 
-        //inventoryByName["Backpack"].slots = GameManager.instance.data.backpackSlots;
-        //inventoryByName["Toolbar"].slots = GameManager.instance.data.toolbarSlots;
+        inventoryByName["Backpack"].slots = GameManager.instance.data.backpackSlots;
+        inventoryByName["Toolbar"].slots = GameManager.instance.data.toolbarSlots;
     }
 
     public void Add(string inventoryName, Item item)

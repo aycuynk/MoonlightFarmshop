@@ -65,7 +65,7 @@ public class Inventory_UI : MonoBehaviour
             {
                 GameManager.instance.data.toolbarSlots = inventory.slots;
             }
-            
+
             Refresh();
         }
 
@@ -114,6 +114,7 @@ public class Inventory_UI : MonoBehaviour
         {
             GameManager.instance.data.toolbarSlots = inventory.slots;
         }
+
         GameManager.instance.uiManager.RefreshAll();
     }
 
