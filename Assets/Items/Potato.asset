@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   itemName: Potato
+  iconID: 2
+  sellPrice: 20
   icon: {fileID: -6137242429100743368, guid: 2393956c19feb3d4aa5d80f844a6cda2, type: 3}
   cropTiles: []

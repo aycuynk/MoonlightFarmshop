@@ -42,4 +42,9 @@ public class Movement : MonoBehaviour
             }
         }
     }
+
+    public void SetPlayerSpeed(float speed)
+    {
+        this.speed = speed;
+    }
 }

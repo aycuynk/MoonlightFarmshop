@@ -12,6 +12,7 @@ public class UI_Manager : MonoBehaviour
 
     public List<Inventory_UI> inventoryUIs;
     public Shop_UI shopUI;
+    public Money_UI monayUI;
 
     public static Slot_UI draggedSlot;
     public static Image draggedIcon;
@@ -94,7 +95,5 @@ public class UI_Manager : MonoBehaviour
         {
             keyValuePair.Value.Refresh();
         }
-
-        shopUI.Refresh();
     }
 }

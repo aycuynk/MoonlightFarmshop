@@ -8,6 +8,8 @@ public class ItemData : ScriptableObject
 {
     public ItemTypes itemType;
     public string itemName = "Item Name";
+    public int iconID;
+    public int sellPrice;
     public Sprite icon;
     public Tile[] cropTiles;
 }

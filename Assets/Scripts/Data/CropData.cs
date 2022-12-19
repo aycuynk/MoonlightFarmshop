@@ -5,8 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CropData
 {
-    public int index;
-    public Item plantedCrop;
+    public string cropName;
     public Vector3Int cropPosition;
     public int growIndex;
 }

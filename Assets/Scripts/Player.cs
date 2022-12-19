@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public InventoryManager inventory;
     [SerializeField] Inventory toolBarInventory;
+    [SerializeField] Animator anim;
+    [SerializeField] Vector2Int positionOffset;
 
     private bool isInteractiveItem;
     public int money;
@@ -20,8 +22,8 @@ public class Player : MonoBehaviour
     {
         if (isInteractiveItem)
         {
-            Vector3Int position = new Vector3Int((int)transform.position.x,
-                (int)transform.position.y, 0);
+            Vector3Int position = new Vector3Int((int)transform.position.x + positionOffset.x,
+                (int)transform.position.y + positionOffset.y, 0);
 
             if (!GameManager.instance.tileManager.IsHighlighted(position))
             {
@@ -31,10 +33,9 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
 
-                if (IsHoeSelected() && GameManager.instance.tileManager.IsInteractable(position))
+                if (IsHoeSelected())
                 {
-                    GameManager.instance.tileManager.SetInteracted(position);
-
+                    anim.SetTrigger("isHit 0");
                 }
                 else
                 {
@@ -51,6 +52,10 @@ public class Player : MonoBehaviour
         else
         {
             GameManager.instance.tileManager.SetHighlight(Vector3Int.zero, false);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GameManager.instance.counterManager.PutItemToSell(transform.position);
+            }
         }
 
         
@@ -86,6 +91,21 @@ public class Player : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void Dig()
+    {
+        Vector3Int position = new Vector3Int((int)transform.position.x + positionOffset.x,
+                (int)transform.position.y + positionOffset.y, 0);
+
+        if(GameManager.instance.tileManager.IsInteractable(position))
+        {
+            GameManager.instance.tileManager.SetInteracted(position);
+        }
+        else
+        {
+            GameManager.instance.tileManager.ResetInteractedTile(position);
+        }
     }
 
     public void CheckSelectedItem()

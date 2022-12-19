@@ -62,6 +62,13 @@ public class TileManager : MonoBehaviour
         GameManager.instance.Save();
     }
 
+    public void ResetInteractedTile(Vector3Int position)
+    {
+        interactableMap.SetTile(position, hiddenInteractableTile);
+        GameManager.instance.data.interactedTiles.Remove(position);
+        GameManager.instance.Save();
+    }
+
     public void SetHighlight(Vector3Int position, bool isOn)
     {
         if(!isOn)

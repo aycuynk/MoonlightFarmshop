@@ -21,8 +21,8 @@ public class CropManager : MonoBehaviour
 
         for (int i = 0; i < cropDatas.Count; i++)
         {
-            PlantSeed(cropDatas[i].cropPosition, cropDatas[i].plantedCrop, cropDatas[i].growIndex);
-            cropMap.SetTile(cropDatas[i].cropPosition, cropDatas[i].plantedCrop.data.cropTiles[cropDatas[i].growIndex]);
+            PlantSeed(cropDatas[i].cropPosition, cropDatas[i].cropName, cropDatas[i].growIndex);
+            cropMap.SetTile(cropDatas[i].cropPosition, GetPlantedItemByIndex(i).data.cropTiles[cropDatas[i].growIndex]);
         }
     }
 
@@ -58,38 +58,32 @@ public class CropManager : MonoBehaviour
             GameManager.instance.uiManager.RefreshInventoryUI("Toolbar");
             Crop crop = Instantiate(itemToPlant.GetComponent<Crop>(), position, Quaternion.identity);
             crops.Add(crop);
-            crop.StartToGrow();
+            crop.StartToGrow(position);
 
-            CropData cropData = new CropData();
-            cropData.plantedCrop = itemToPlant;
-            cropData.cropPosition = position;
-            cropDatas.Add(cropData);
             GameManager.instance.Save();
         }
     }
 
-    public void PlantSeed(Vector3Int position, Item itemToPlant, int growIndex)
+    public void PlantSeed(Vector3Int position, string itemName, int growIndex)
     {
-        if (itemToPlant != null && IsPlantable(position, itemToPlant.data.itemType) && cropMap.GetTile(position) == null)
+        Item plantedItem = GameManager.instance.ItemManager.GetItemByName(itemName);
+        if (plantedItem != null && IsPlantable(position, plantedItem.data.itemType) && cropMap.GetTile(position) == null)
         {
-            SetCropTile(itemToPlant.data.cropTiles[0]);
-            cropMap.SetTile(position, cropTile);
-            Crop crop = Instantiate(itemToPlant.GetComponent<Crop>(), position, Quaternion.identity);
+            Crop crop = Instantiate(plantedItem.GetComponent<Crop>(), position, Quaternion.identity);
             crops.Add(crop);
-            crop.ContinueToGrow(growIndex);
+            crop.ContinueToGrow(growIndex, crops.IndexOf(crop));
         }
     }
 
-    public void GrowSeed(Crop crop, int fromIndex, int toIndex)
+    public void UpdateSeedTile(Vector3Int cropPos, TileBase toTile)
     {
-        for (int i = 0; i < cropDatas.Count; i++)
-        {
-            cropMap.SetTile(cropDatas[i].cropPosition, cropDatas[i].plantedCrop.data.cropTiles[toIndex]);
-            if (cropDatas.IndexOf(cropDatas[i]) == crops.IndexOf(crops[i]))
-            {
-                cropDatas[i].growIndex = crops[i].cropIndex;
-            }
-        }
+        cropMap.SetTile(cropPos, toTile);
+    }
+
+    private Item GetPlantedItemByIndex(int index)
+    {
+        Item plantedItem = GameManager.instance.ItemManager.GetItemByName(cropDatas[index].cropName);
+        return plantedItem;
     }
 
     public void Harvest(Vector3Int position)
@@ -98,12 +92,15 @@ public class CropManager : MonoBehaviour
 
         for (int i = 0; i < crops.Count; i++)
         {
+            crops[i].UpdateIndexOfData();
             Vector3Int cropPos = new Vector3Int((int)crops[i].transform.position.x, (int)crops[i].transform.position.y, 0);
             if (crops[i].isSeedGrown && position == cropPos)
             {
                 cropMap.SetTile(cropPos, null);
                 crops[i].EndGrow(cropPos);
                 crops.Remove(crops[i]);
+                cropDatas.Remove(cropDatas[i]);
+                GameManager.instance.Save();
             }
         }
     }

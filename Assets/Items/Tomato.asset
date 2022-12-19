@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   itemName: Tomato
+  iconID: 4
+  sellPrice: 30
   icon: {fileID: 2134584563556110807, guid: 2393956c19feb3d4aa5d80f844a6cda2, type: 3}
   cropTiles: []

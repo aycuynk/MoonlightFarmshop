@@ -105,7 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: e7bce9528cb43834d90a65eefd0927d9, type: 2}
+  cropIndex: 0
   growTime: 5
   collider: {fileID: 6767019659061623280}
   sprite: {fileID: 6767019659061623283}
   grownCrop: {fileID: 67686632066781979, guid: c7253cb9141b09e4ebac1606e17454aa, type: 3}
+  seed: {fileID: 0}
+  isSeedGrown: 0

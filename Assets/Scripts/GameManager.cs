@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TileManager tileManager;
     public UI_Manager uiManager;
     public CropManager cropManager;
+    public CounterManager counterManager;
 
     public Player player;
     public GameData data;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         player.money += value;
         uiManager.RefreshAll();
         data.playerData.money = player.money;
+        uiManager.monayUI.SetText(player.money);
         Save();
     }
 

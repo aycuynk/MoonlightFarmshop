@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d0ee4f35781774abf8dc1e8af4d047, type: 3}
   m_Name: Tomato_Seeds
   m_EditorClassIdentifier: 
+  itemType: 0
   itemName: Tomato Seeds
+  iconID: 3
   icon: {fileID: 6790902163275402405, guid: 2393956c19feb3d4aa5d80f844a6cda2, type: 3}
   cropTiles:
   - {fileID: 11400000, guid: adeeeaa551b6d3947a049e3a6418a593, type: 2}

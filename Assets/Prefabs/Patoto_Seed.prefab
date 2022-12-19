@@ -15,13 +15,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patoto_Seed
       objectReference: {fileID: 0}
+    - target: {fileID: 4044239989615800149, guid: 6f10526ae38d0b74cb20a45a64ec4b68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4044239989615800150, guid: 6f10526ae38d0b74cb20a45a64ec4b68, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 540632357552999301, guid: 2393956c19feb3d4aa5d80f844a6cda2, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4044239989615800150, guid: 6f10526ae38d0b74cb20a45a64ec4b68, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4044239989615800151, guid: 6f10526ae38d0b74cb20a45a64ec4b68, type: 3}
       propertyPath: m_RootOrder
@@ -101,7 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: ac07ed90471acd34398cb53fdcf8ce12, type: 2}
+  cropIndex: 5
   growTime: 4
   collider: {fileID: 7617583564349182187}
   sprite: {fileID: 7617583564349182184}
   grownCrop: {fileID: 67686632066781979, guid: 034c1d20c5021de4599f87f504fe3f89, type: 3}
+  isSeedGrown: 1

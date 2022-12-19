@@ -12,11 +12,13 @@ public class Inventory
         public int count;
         public int maxAllowed;
 
+        public int iconID;
         public Sprite icon;
 
         public Slot()
         {
             itemName = "";
+            iconID = -1;
             count = 0;
             maxAllowed = 99;
         }
@@ -47,13 +49,15 @@ public class Inventory
         public void AddItem(Item item)
         {
             this.itemName = item.data.itemName;
+            this.iconID = item.data.iconID;
             this.icon = item.data.icon;
             count++;
         }
 
-        public void AddItem(string itemName, Sprite icon, int maxAllowed)
+        public void AddItem(string itemName, Sprite icon, int iconID, int maxAllowed)
         {
             this.itemName = itemName;
+            this.iconID = iconID;
             this.icon = icon;
             count++;
             this.maxAllowed = maxAllowed;
@@ -68,6 +72,7 @@ public class Inventory
                 if (count == 0)
                 {
                     icon = null;
+                    iconID = -1;
                     itemName = "";
                 }
             }
@@ -131,7 +136,7 @@ public class Inventory
         {
             for (int i = 0; i < numToMove; i++)
             {
-                toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
+                toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.iconID, fromSlot.maxAllowed);
                 fromSlot.RemoveItem();
             }
         }
